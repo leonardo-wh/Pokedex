@@ -1,0 +1,46 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  
+  
+  <link rel="stylesheet" href="{% static 'css/mdb.min.css' %}">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title></title>
+</head>
+<body>
+
+    
+<div class="row row-cols-1 row-cols-md-5 g-2" >
+{% if lista_pokemones %}
+{% for pokemon in lista_pokemones %} 
+  <div class="col">
+    <div class="card h-100">
+      <img src="{{ pokemon.sprite }}" class="card-img-top" alt="Hollywood Sign on The Hill"/>
+      <div class="card-body">
+        <h5 class="card-title">{{ pokemon.name }}</h5>
+        <a class="btn btn-primary" href="{% url 'pokedex:ver_pokemon' pokemon.id %}" target="_blank" style="display: flex; align-items: center; text-align: center; vertical-align: middle;">Ver pokemon</a>
+      </div>
+    </div>
+  </div>
+{% endfor %}
+{% endif %}
+</div>
+
+<tr>
+        
+  <th colspan="5"><a class="btn btn-primary" href="?page={{ pagination.prev_page }}" style="display: flex; align-items: center; text-align: center; vertical-align: middle;">Atras</a></th>
+        
+        
+  <th colspan="5"><a class="btn btn-primary"  href="?page={{ pagination.next_page }}" style="display: flex; align-items: center; text-align: center; vertical-align: middle;">Siguiente</a></th>
+        
+</tr>
+
+  <script src="{% static 'js/mdb.min.js' %}"></script>
+
+
+</body>
+</html>

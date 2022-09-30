@@ -1,0 +1,67 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  
+  
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title></title>
+</head>
+<body>
+
+
+
+
+<div class="card text-center border border-primary shadow-0 " style="background-color:#ffffff;" >
+  <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+    <img src="{{ sprite }}" class="img-fluid" style="height: 20%; width: 20%;">
+    <a href="#!">
+      <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
+    </a>
+  </div>
+
+  <div class="card-body">
+    <h5 class="card-title">{{ name }}</h5>
+    <p class="card-text">
+      Peso: {{ peso }}
+    </p>
+    <p class="card-text">
+      Altura: {{ altura }}
+    </p>
+    <p class="card-text">
+      Tipos: 
+      {% for tipo in tipos %}
+      
+      <a href="{% url 'pokedex:tipo_pokemon' tipo.type.name %}">{{ tipo.type.name }}</a>
+      
+      {% endfor %}
+    </p>
+    <p class="card-text">
+      Habilidades: 
+      {% for habilidad in habilidades %}
+      {{ habilidad.ability.name }},
+      {% endfor %}
+    </p>
+    <p class="card-text">
+      Movimientos: 
+      {% for movimiento in movimientos %}
+      {{ movimiento.move.name }} ,  
+      {% endfor %}
+    </p>
+
+
+  </div>
+</div>
+
+
+
+  <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+
+</body>
+</html>
